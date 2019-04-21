@@ -31,16 +31,17 @@
                 <option value="other">Other</option>
             </select><br>
             Date: <input type="date" name="date" id="date"><br> <!-- zB.: 2019-04-16 -->
+            Value: <input type="text" name="value" id="value" required><br>
             <input type="submit"  name="submit">
         </form>
     </body>
 </html>
 <?php
     if(isset($_POST['submit'])){
-        $data = [$_POST['name'],$_POST['type'],$_POST['purpose'],$_POST['date']];
+        $data = [$_POST['name'],$_POST['type'],$_POST['purpose'],$_POST['date'], $_POST['value']];
         $entry = implode(',',$data);
 
-        $insertStatement = "INSERT INTO entries (id, name, type, purpose, date) VALUES ('', '$data[0]', '$data[1]', '$data[2]', '$data[3]');";
+        $insertStatement = "INSERT INTO entries (id, name, type, purpose, date, value) VALUES ('', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]');";
         if ($_res = $conn->query($insertStatement)){
             echo "<br>Entry has been added to the database.";
         }else {
