@@ -38,6 +38,14 @@
 
         <h1>get Payments/Incomes: </h1>
         <a href="index.php?showEntries=true"><button type="button">get Entries</button></a><br>
+
+        <div id="chartMaxSize" style="width: 400px;height: 400px;">
+            <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+        <script src="chart.js"></script>
+
     </body>
 </html>
 <?php
