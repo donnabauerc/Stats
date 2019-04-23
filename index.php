@@ -49,35 +49,44 @@
     </body>
 </html>
 <?php
-    if(isset($_POST['submit'])){
-        $data = [$_POST['name'],$_POST['type'],$_POST['purpose'],$_POST['date'], $_POST['value']];
-        $entry = implode(',',$data);
+    if(isset($_POST['submit'])) {
+        $data = [$_POST['name'], $_POST['type'], $_POST['purpose'], $_POST['date'], $_POST['value']];
+        $entry = implode(',', $data);
 
         $insertStatement = "INSERT INTO entries (id, name, type, purpose, date, value) VALUES ('', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]');";
-        if ($_res = $conn->query($insertStatement)){
-            echo "<br>Entry has been added to the database.";
-        }else {
-            echo "<br>No insertion into database";
-        }
-        $conn->close();
+
     }
 
     if (isset($_GET['showEntries'])) {
-        $selectStatement = "SELECT date, purpose, value FROM ENTRIES";
+        $selectStatement = "SELECT date, purpose,type, value FROM ENTRIES;";
         $result = $conn->query($selectStatement);
 
         if ($result->num_rows > 0) {
             $out = "<table><tr><th>date:</th><th>purpose:</th><th>value:</th></tr>";
 
             while($row = $result->fetch_assoc()) {
-                $out = $out."<tr><td>" . $row["date"]. "</td><td>" . $row["purpose"]. "</td><td>" . $row["value"]. "€</td></tr>";
+                if($row["type"] == "payment"){
+                    $out = $out."<tr bgcolor=\"#FF0000\"><td>" . $row["date"]. "</td><td>" . $row["purpose"]. "</td><td>" . $row["value"]. "€</td></tr>";
+                }else{
+                    $out = $out."<tr bgcolor=\"#00FF00\"><td>" . $row["date"]. "</td><td>" . $row["purpose"]. "</td><td>" . $row["value"]. "€</td></tr>";
+                }
             }
-
             $out = $out."</table>";
             echo $out;
         } else {
             echo "0 results";
         }
-        $conn->close();
     }
+
+    $selectIncome = "SELECT sum(value) income FROM ENTRIES WHERE upper(type) like 'INCOME';";
+    $selectExpense = "SELECT sum(value) as expense FROM ENTRIES WHERE upper(type) like 'PAYMENT';";
+
+    $income = ($conn->query($selectIncome))->fetch_assoc();
+    $expense = ($conn->query($selectExpense))->fetch_assoc();
+    $balance = $income["income"]-$expense["expense"];
+
+    echo $expense["expense"]."<br>".$income["income"]."<br>". $balance;
+
+
+    $conn->close();
 ?>
