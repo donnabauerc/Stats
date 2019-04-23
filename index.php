@@ -50,10 +50,14 @@
 <?php
     //new Entry
     if(isset($_POST['submit'])) {
-        $data = [$_POST['name'], $_POST['type'], $_POST['purpose'], $_POST['date'], $_POST['value']];
-        $entry = implode(',', $data);
-
-        $insertStatement = "INSERT INTO entries (id, name, type, purpose, date, value) VALUES ('', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]');";
+        //checking Inputs
+        if(date("Y-m-d",strtotime($_POST['date']))<date("Y-m-d") || date("y")-date("y",strtotime($_POST['date']))>1 || !is_numeric($_POST['value'])){
+            echo "Impossible Input!";
+        }else{
+            $data = [$_POST['name'], $_POST['type'], $_POST['purpose'], $_POST['date'], $_POST['value']];
+            $entry = implode(',', $data);
+            $insertStatement = "INSERT INTO entries (id, name, type, purpose, date, value) VALUES ('', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]');";
+        }
     }
 
     //print all Entries
