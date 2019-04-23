@@ -1,4 +1,5 @@
 <?php
+    //Connection with DB
     $_db_host = "localhost";
     $_db_datenbank = "stats";
     $_db_username = "user";
@@ -16,6 +17,7 @@
         <meta charset="UTF-8">
         <title>Stats</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     </head>
     <body>
         <h1>create Payment/Income:</h1><br>
@@ -42,21 +44,19 @@
         <div id="chartMaxSize" style="width: 400px;height: 400px;">
             <canvas id="myChart" width="400" height="400"></canvas>
         </div>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-        <script src="chart.js"></script>
-
     </body>
 </html>
+
 <?php
+    //new Entry
     if(isset($_POST['submit'])) {
         $data = [$_POST['name'], $_POST['type'], $_POST['purpose'], $_POST['date'], $_POST['value']];
         $entry = implode(',', $data);
 
         $insertStatement = "INSERT INTO entries (id, name, type, purpose, date, value) VALUES ('', '$data[0]', '$data[1]', '$data[2]', '$data[3]', '$data[4]');";
-
     }
 
+    //print all Entries
     if (isset($_GET['showEntries'])) {
         $selectStatement = "SELECT date, purpose,type, value FROM ENTRIES;";
         $result = $conn->query($selectStatement);
@@ -78,15 +78,36 @@
         }
     }
 
+    //get some facts
     $selectIncome = "SELECT sum(value) income FROM ENTRIES WHERE upper(type) like 'INCOME';";
     $selectExpense = "SELECT sum(value) as expense FROM ENTRIES WHERE upper(type) like 'PAYMENT';";
-
     $income = ($conn->query($selectIncome))->fetch_assoc();
     $expense = ($conn->query($selectExpense))->fetch_assoc();
     $balance = $income["income"]-$expense["expense"];
+    $temp = $income["income"]+$expense["expense"];
+    $percentIncome = round($income["income"]/$temp,2)*100;
+    $percentExpense = round($expense["expense"]/$temp,2)*100;
 
-    echo $expense["expense"]."<br>".$income["income"]."<br>". $balance;
-
+    //echo script (and not a own js file) because of access to php vars
+    echo "<script>
+            var myChartObject = document.getElementById('myChart');
+            var chart = new Chart(myChartObject,{
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        label: 'Dataset 1',
+                        backgroundColor: ['rgb(255,0,0)','rgb(0,255,0)'],
+                        data: [".$percentExpense.",".$percentIncome."]
+                    }],
+                    labels:[
+                        'Expenses',
+                        'Income'
+                    ]
+                },
+                options: {
+                }
+            });
+        </script>";
 
     $conn->close();
 ?>
