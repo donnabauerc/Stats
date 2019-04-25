@@ -20,29 +20,37 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     </head>
     <body>
-        <h1>create Payment/Income:</h1><br>
-        <form id="entry" action="" method="post" >
-            Name: <input type="text" name="name" id="name" required><br> <!-- necessary with purpose? -->
-            Type: <select name="type" form="entry" id="type" required>
-                <option value="income">Income</option>      <!-- if income/payment is true only purposes for incomes/payments should be displayed-->
-                <option value="payment">Payment</option>
-            </select><br>
-            Purpose: <select name="purpose" form="entry" id="purpose" required>
-                <option value="food">Food</option>
-                <option value="clothes">Clothes</option>
-                <option value="work">Work</option>
-                <option value="other">Other</option>
-            </select><br>
-            Date: <input type="date" name="date" id="date"><br> <!-- zB.: 2019-04-16 -->
-            Value: <input type="text" name="value" id="value" required><br>
-            <input type="submit"  name="submit">
-        </form>
-
-        <h1>get Payments/Incomes: </h1>
-        <a href="index.php?showEntries=true"><button type="button">get Entries</button></a><br>
-
-        <div id="chartMaxSize" style="width: 400px;height: 400px;">
-            <canvas id="myChart" width="400" height="400"></canvas>
+        <div id="wrapper">
+            <div id="nav">
+                <ul id="navbar">
+                    <li class="effect">Home</li>
+                    <li class="effect">Statistics</li>
+                    <li class="effect">New Entry</li>
+                    <li class="effect">About</li>
+                </ul>
+            </div>
+            <div id="content">
+                <h1>create Payment/Income:</h1><br>
+                <form id="entry" action="" method="post" >
+                    Name: <input type="text" name="name" id="name" required><br> <!-- necessary with purpose? -->
+                    Type: <select name="type" form="entry" id="type" required>
+                        <option value="income">Income</option>      <!-- if income/payment is true only purposes for incomes/payments should be displayed-->
+                        <option value="payment">Payment</option>
+                    </select><br>
+                    Purpose: <select name="purpose" form="entry" id="purpose" required>
+                        <option value="food">Food</option>
+                        <option value="clothes">Clothes</option>
+                        <option value="work">Work</option>
+                        <option value="other">Other</option>
+                    </select><br>
+                    Date: <input type="date" name="date" id="date"><br> <!-- zB.: 2019-04-16 -->
+                    Value: <input type="text" name="value" id="value" required><br>
+                    <input type="submit"  name="submit">
+                </form>
+                <div id="chartMaxSize" style="width: 400px;height: 400px;">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+            </div>
         </div>
     </body>
 </html>
@@ -61,7 +69,6 @@
     }
 
     //print all Entries
-    if (isset($_GET['showEntries'])) {
         $selectStatement = "SELECT date, purpose,type, value FROM ENTRIES;";
         $result = $conn->query($selectStatement);
 
@@ -80,7 +87,7 @@
         } else {
             echo "0 results";
         }
-    }
+
 
     //get some facts
     $selectIncome = "SELECT sum(value) income FROM ENTRIES WHERE upper(type) like 'INCOME';";
