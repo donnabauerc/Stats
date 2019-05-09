@@ -3,6 +3,11 @@ body{
     left: 0px;
     font-family: Arial;
 }
+a{
+    text-decoration: none;
+    text-transform: none;
+    color: white;
+}
 #wrapper{
     position: absolute;
     top: 0px;
