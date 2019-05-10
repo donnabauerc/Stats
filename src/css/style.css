@@ -58,3 +58,6 @@ th, td {
 #myChart{
     margin-left: 55%;
 }
+#registerDiv{
+  display: none;
+}

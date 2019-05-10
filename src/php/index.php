@@ -32,6 +32,11 @@
                     document.getElementById("wrapper").style.backgroundColor = "white";
                 }
             }
+
+            function register(){
+                document.getElementById("loginDiv").style.display = "none";
+                document.getElementById("registerDiv").style.display = "block";
+            }
         </script>
     </head>
     <body>
@@ -45,14 +50,27 @@
                 </ul>
             </div>
             <div id="content">
-                <div id="loginDiv">
+                <div id="Div">
+                  <div id="loginDiv">
                     <h1>LogIn</h1>
                     <form id="login" method="post" action="">
                         Username: <input type="text" name="uname" required><br>
                         Password: <input type="password" name="password" required><br>
                         <input type="submit" value="LogIn" name="login">
                     </form>
+                    <p id="registerSpan" onclick="register()">create Account?</p>
                 </div>
+                <div id="registerDiv">
+                  <h1>Register: </h1>
+                  <form id="register" method="post" action="">
+                    Real Name: <input type="text" name="name" required><br>
+                    Username: <input type="text" name="uname" required><br>
+                    Password: <input type="password" name="password1" required><br>
+                    Password: <input type="password" name="password1" required><br>
+                    <input type="submit" value="Regist" name="register">
+                  </form>
+                </div>
+              </div>
             <div id="create" style="display: none;">
                 <h1>create Payment/Income:</h1><br>
                 <form id="entry" action="" method="post" >
@@ -85,7 +103,7 @@
 <?php
     if(isset($_SESSION['user_id'])){
         echo "<script>
-                document.getElementById('loginDiv').style.display = 'none';
+                document.getElementById('Div').style.display = 'none';
                 document.getElementById('create').style.display = 'block';
                 document.getElementById('chartMaxSize').style.display = 'block';
                 document.getElementById('printEntries').style.display = 'block';
