@@ -61,10 +61,10 @@
 </html>
 <?php
     if(isset($_SESSION['user_id'])){
-        Redirect('http://localhost/Stats/src/php/index.php', false);
-    }else{
+        header('Location: http://localhost/Stats/src/php/index.php');
+    }
 
-        if(isset($_POST['login'])){
+    if(isset($_POST['login'])){
             $user = [$_POST['uname'], $_POST['password']];
             $loginStatement = "SELECT * from user  WHERE username like ('".$user[0]."') AND password like ('".$user[1]."');";
             $result = $conn->query($loginStatement);
@@ -75,9 +75,9 @@
             }else{
                 echo "Sorry, an error has ocurred! ";
             }
-        }
+    }
 
-        if(isset($_POST['register'])){
+    if(isset($_POST['register'])){
             //validation of passwords is still missing
             $register_user = [$_POST['name'], $_POST['uname'], $_POST['password1'], $_POST['password2']];
             $user = [$register_user[1], $register_user[2]];
@@ -92,14 +92,8 @@
             }else{
                 echo 'Sorry, there was an error creating your account';
             }
-        }
-
     }
 
-    function Redirect($url, $permanent = false){
-        header('Location: ' . $url, true, $permanent ? 301 : 302);
-        exit();
-    }
 
     $conn->close();
 ?>
