@@ -47,7 +47,7 @@
                 <h1>Register: </h1>
 
                 <form id="register" method="post" action="">
-                    Real Name: <input type="text" name="name" required><br>
+                    Email: <input type="email" name="email" required><br>
                     Username: <input type="text" name="uname" required><br>
                     Password: <input type="password" name="password1" required><br>
                     Password: <input type="password" name="password2" required><br>
@@ -65,35 +65,45 @@
     }
 
     if(isset($_POST['login'])){
-            $user = [$_POST['uname'], $_POST['password']];
-            $loginStatement = "SELECT * from user  WHERE username like ('".$user[0]."') AND password like ('".$user[1]."');";
-            $result = $conn->query($loginStatement);
-
-            if($result->num_rows > 0){
-                $user = ($result->fetch_assoc());
-                $_SESSION['user_id'] = $user["id"];
-            }else{
-                echo "Sorry, an error has ocurred! ";
-            }
+            validateUser($_POST["uname"], $_POST["password"], $conn);
     }
 
     if(isset($_POST['register'])){
             //validation of passwords is still missing
-            $register_user = [$_POST['name'], $_POST['uname'], $_POST['password1'], $_POST['password2']];
+
+            if($_POST['password1'] == $_POST['password2'])
+            $register_user = [$_POST['email'], $_POST['uname'], $_POST['password1']];
             $user = [$register_user[1], $register_user[2]];
 
-            $registerStatement = "INSERT INTO user (id, username, password, name) VALUES ('', '$register_user[1]', '$register_user[2]', '$register_user[0]');";
-            $result = $conn->query($registerStatement);//überprüfen ob eh noch nicht existiert
+            $registerStatement = "INSERT INTO user (id, username, password, email) VALUES ('', '$register_user[1]', '$register_user[2]', '$register_user[0]');";
+            $result = $conn->query($registerStatement);
 
-            if($result){
-                $user = ($result->fetch_assoc());
-
-                $_SESSION['user_id'] = $user["user_id"];
+            if(!$result){ //mithilfe Unique Constraints: username, email
+                echo '<br> Sorry, there was an error creating your account! Username or Email are used!';
             }else{
-                echo 'Sorry, there was an error creating your account';
+                validateUser($register_user[1],$register_user[2], $conn);
+
+                $_SESSION['username'] = $register_user[1];
+                $_SESSION['email'] = $register_user[0];
+
+                include "mail.php";
             }
     }
 
+    function validateUser($username, $password, $conn){
+        $loginStatement = "SELECT * from user  WHERE username like ('$username') AND password like ('$password');";
+        $result = $conn->query($loginStatement);
+
+        if($result->num_rows > 0){
+            $user = ($result->fetch_assoc());
+
+            $_SESSION['user_id'] = $user["id"];
+
+            header('Location: http://localhost/Stats/src/php/index.php');
+        }else{
+            echo "Sorry, an error has ocurred! ";
+        }
+    }
 
     $conn->close();
 ?>
