@@ -50,7 +50,7 @@
                     Email: <input type="email" name="email" required><br>
                     Username: <input type="text" name="uname" required><br>
                     Password: <input type="password" name="password1" required><br>
-                    Password: <input type="password" name="password2" required><br>
+                    Retype Password: <input type="password" name="password2" required><br>
                     <input type="submit" value="Register" name="register">
                 </form>
 
@@ -87,6 +87,10 @@
                 $_SESSION['email'] = $register_user[0];
 
                 include "mail.php";
+
+                if ($mail->send()) {
+                    validateUser($register_user[1], $register_user[2], $conn);
+                }
             }
     }
 

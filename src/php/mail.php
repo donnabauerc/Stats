@@ -22,9 +22,4 @@
 
     $mail->AltBody = 'Sorry, there has been a mistake!';
 
-    if (!$mail->send()) {
-        echo "<br> Sorry, there has ocurred a mistake! Mailer Error: " . $mail->ErrorInfo;
-    } else {
-
-    }
  ?>
