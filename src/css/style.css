@@ -32,19 +32,24 @@ th, td {
     padding: 10px 100px 10px 10px;
 }
 #navbar{
+    z-index: 5;
     position: absolute;
     list-style-type: none;
     height: 30%;
-    top: 30%;
     padding-left: 0px;
     left: 0px;
+}
+#navdiv{
+    position: fixed;
+    z-index: 5;
+    top: 30%;
 }
 .effect{
     opacity: 0.5;
     color: white;
     cursor: pointer;
     list-style-type: none;
-    width: 100%;
+    width: 150px;
     padding: 15% 6% 15% 6%;
     font-size: 30px;
     background-color: #dee0e2;
@@ -59,6 +64,7 @@ th, td {
     margin-left: 55%;
 }
 #darkButton{
+    z-index: 5;
     position: absolute;
     right: 0px;
     top: 0px;
@@ -71,4 +77,46 @@ th, td {
 #darkButton:hover{
     color: white;
     background-color: black;
+}
+#content_text_1{
+    font-size: 200%;
+    position: absolute;
+    top: 300px;
+    left: 1300px;
+}
+
+.site{
+    position: absolute;
+    width: 100%;
+    height: 892px;
+    z-index: 0;
+    left: 0px;
+}
+#site_1{
+    top: 0px;
+    background-color: red;
+}
+#site_2{
+    margin-top: 892px;
+    background-color: blue;
+}
+.circle{
+    position: relative;
+    border-radius: 100%;
+    z-index: 6;
+    opacity: 0.7;
+    border: 10px solid white;
+    width: 350px;
+    height: 350px;
+    top: 280px;
+    margin-left: 100px;
+    float: left;
+    transition-duration: 0.8s;
+}
+.circle:hover{
+    transition-duration: 0.8s;
+    background-color: white;
+}
+#circle_home{
+    margin-left: 350px;
 }

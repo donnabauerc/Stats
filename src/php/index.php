@@ -10,6 +10,7 @@
         <title>Stats</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script>
+            //https://tympanus.net/Tutorials/CircleHoverEffects/
             var nightMode = true;
             function darkmode(dark){
                 if(dark){
@@ -24,7 +25,7 @@
     </head>
     <body>
         <div id="wrapper">
-            <div id="nav">
+            <div id="navdiv">
                 <ul id="navbar">
                     <li class="effect" style="background-color: #575FCF"><a href="index.php">Home</a></li>
                     <li class="effect"><a href="statistics.php">Statistics</a></li>
@@ -32,8 +33,25 @@
                     <li class="effect"><a href="about.php">About</a></li>
                 </ul>
             </div>
+
             <div id="content">
                 <button id="darkButton" onclick="darkmode(nightMode)">Night Mode</button>
+
+                <div id="site_1" class="site">
+                    <div id="content_text_1">
+                    <h1>Hello World!</h1>
+                    <p>You now do have access <br>
+                        to ALL features of Stats!<br>
+                        You can track your income <br>
+                        and expenses. Go to New <br>
+                        Entries and create one!</p>
+                </div>
+                </div>
+                <div id="site_2" class="site">
+                    <div id="circle_home" class="circle"></div>
+                    <div id="circle_statistic" class="circle"></div>
+                    <div id="circle_newentry" class="circle"></div>
+                </div>
             </div>
         </div>
 
