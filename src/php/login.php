@@ -19,44 +19,47 @@
         <meta charset="UTF-8">
         <title>Stats</title>
 
+        <link rel="stylesheet" type="text/css" href="../css/login.css">
+
         <script>
             function register(){
                 document.getElementById('loginDiv').style.display = 'none';
                 document.getElementById('registerDiv').style.display = 'block';
             }
+
+            function login(){
+                document.getElementById('loginDiv').style.display = 'block';
+                document.getElementById('registerDiv').style.display = 'none';
+            }
         </script>
     </head>
     <body>
-        <div id="auccounts">
+        <div id="wrapper">
+            <div id="accounts">
+                <div id="loginDiv">
+                    <h1>LogIn</h1>
+                    <form id="login" method="post" action="">
+                        Username: <input id="username_login" class="input" type="text" name="uname" required><br>
+                        Password: <input type="password" class="input" name="password" required style="margin-left: 5px;"><br>
+                        <input id="LoginSubmitButton" type="submit" value="LogIn" name="login" class="ButtonLayout">
+                    </form>
+                    <button id="registerButton" onclick="register()" class="ButtonLayout">create Account?</button>
+                </div>
+                <div id="registerDiv" style="display: none;">
 
-            <div id="loginDiv">
+                    <h1>Register: </h1>
 
-                <h1>LogIn</h1>
-
-                <form id="login" method="post" action="">
-                    Username: <input type="text" name="uname" required><br>
-                    Password: <input type="password" name="password" required><br>
-                    <input type="submit" value="LogIn" name="login">
-                </form>
-
-                <p id="registerSpan" style="cursor: pointer;" onclick="register()">create Account?</p>
-            </div>
-
-            <div id="registerDiv" style="display: none;">
-
-                <h1>Register: </h1>
-
-                <form id="register" method="post" action="">
-                    Email: <input type="email" name="email" required><br>
-                    Username: <input type="text" name="uname" required><br>
-                    Password: <input type="password" name="password1" required><br>
-                    Retype Password: <input type="password" name="password2" required><br>
-                    <input type="submit" value="Register" name="register">
-                </form>
-
+                    <form id="register" method="post" action="">
+                        Email: <input type="email" name="email" required class="input register_input" style="margin-left: 90px;"><br>
+                        Username: <input type="text" name="uname" required class="input register_input" style="margin-left: 55px;"><br>
+                        Password: <input type="password" name="password1" required class="input register_input" style="margin-left: 60px;"><br>
+                        Retype Password: <input type="password" name="password2" required class="input register_input"><br>
+                        <input id="RegisterSubmitButton" type="submit" value="Register" name="register" class="ButtonLayout" style="width: 195px;">
+                    </form>
+                    <button id="loginButton" class="ButtonLayout" onclick="login()" style="width: 195px;">LogIn with Existing</button>
+                </div>
             </div>
         </div>
-
     </body>
 </html>
 <?php

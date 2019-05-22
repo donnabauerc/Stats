@@ -1,0 +1,43 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    background-color: #f0ffff;
+}
+#loginDiv{
+    margin-top: 320px;
+    margin-left: 800px;
+}
+#registerDiv{
+    margin-top: 270px;
+    margin-left: 800px;
+}
+#LoginSubmitButton{
+    margin-top: 16px;
+    float: left;
+}
+.ButtonLayout{
+    border: none;
+    padding: 12px;
+    width: 167px;
+}
+.input{
+    border: none;
+    padding: 8px 7px 8px 7px;
+    background-color: #DDDDDD;
+}
+.input:hover{
+    background-color: white;
+}
+#username_login{
+    margin-bottom: 10px;
+}
+#RegisterSubmitButton{
+    margin-top: 16px;
+    float: left;
+}
+.register_input{
+    margin-top: 10px;
+}
