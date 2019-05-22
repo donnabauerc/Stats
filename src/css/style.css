@@ -52,12 +52,23 @@ th, td {
 .effect:hover{
     opacity: 1;
     transition: 0.5s;
-    width: 230%;
+    width: 150%;
     background-color: #575FCF;
 }
 #myChart{
     margin-left: 55%;
 }
-#registerDiv{
-    /*display: none;*/
+#darkButton{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    color: white;
+    background-color: #575FCF;
+}
+
+#darkButton:hover{
+    color: white;
+    background-color: black;
 }
