@@ -104,19 +104,23 @@ th, td {
     position: relative;
     border-radius: 100%;
     z-index: 6;
-    opacity: 0.7;
     border: 10px solid white;
     width: 350px;
     height: 350px;
     top: 280px;
     margin-left: 100px;
     float: left;
-    transition-duration: 0.8s;
+    /*transition-duration: 0.8s;*/
 }
 .circle:hover{
-    transition-duration: 0.8s;
+    opacity: 0.7;
     background-color: white;
 }
 #circle_home{
     margin-left: 350px;
+    background-image: url("../media/home.jpg");
 }
+#circle_home:hover{
+    background-image: none;
+}
+http://css3.bradshawenterprises.com/cfimg/
