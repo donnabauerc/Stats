@@ -48,10 +48,20 @@
                 </div>
                 </div>
                 <div id="site_2" class="site">
-                    <div id="circle_home" class="circle"></div>
-                    <div id="circle_statistic" class="circle"></div>
-                    <div id="circle_newentry" class="circle"></div>
+                    <div id="circle_home" class="circle">
+                        <img class="images" id="img_home" src="../media/home.jpg" >
+                        <div id="home_value" class="hover_value"><h1 style="position:absolute;margin-left:135px;margin-top: 155px;">Home</h1></div>
+                    </div>
+                    <div id="circle_statistic" class="circle">
+                        <img class="images" id="img_statistic" src="../media/statistics.jpg" >
+                        <div id="statistic_value" class="hover_value"><h1 style="position:absolute;margin-left:105px;margin-top: 135px;text-align: center;">View your <br>Statistics</h1></div>
+                    </div>
+                    <div id="circle_newentry" class="circle">
+                        <img class="images" id="img_newentry" src="../media/newentry.jpg" >
+                        <div id="newentry_value" class="hover_value"><h1 style="position:absolute;margin-left:100px;margin-top: 135px;text-align: center;">Create a <br>New Entry</h1></div>
+                    </div>
                 </div>
+                <div id="site_3" class="site"> </div>
             </div>
         </div>
 

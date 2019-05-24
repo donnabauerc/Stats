@@ -65,7 +65,7 @@ th, td {
 }
 #darkButton{
     z-index: 5;
-    position: absolute;
+    position: fixed;
     right: 0px;
     top: 0px;
     border: none;
@@ -107,20 +107,36 @@ th, td {
     border: 10px solid white;
     width: 350px;
     height: 350px;
-    top: 280px;
+    top: 260px;
     margin-left: 100px;
     float: left;
-    /*transition-duration: 0.8s;*/
+    background-color: white;
+    transition-duration: 0.3s;
 }
 .circle:hover{
-    opacity: 0.7;
-    background-color: white;
+    box-shadow: 10px 10px rgba(0,0,0,0.5);
 }
 #circle_home{
     margin-left: 350px;
-    background-image: url("../media/home.jpg");
 }
-#circle_home:hover{
-    background-image: none;
+
+.images{
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
 }
-http://css3.bradshawenterprises.com/cfimg/
+.hover_value{
+    cursor: pointer;
+    z-index: 8;
+    position: absolute;
+    top: 0px;
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+    background-color: white;
+    opacity: 0;
+    transition-duration: 0.5s;
+}
+.hover_value:hover{
+    opacity: 1;
+}
