@@ -63,18 +63,22 @@ th, td {
 #myChart{
     margin-left: 55%;
 }
-#darkButton{
+.button{
     z-index: 5;
     position: fixed;
-    right: 0px;
     top: 0px;
     border: none;
     padding: 5px 15px 5px 15px;
     color: white;
     background-color: #575FCF;
 }
-
-#darkButton:hover{
+#darkButton{
+    right: 0px;
+}
+#signoutButton{
+    right: 109px;
+}
+.button:hover{
     color: white;
     background-color: black;
 }

@@ -35,7 +35,8 @@
             </div>
 
             <div id="content">
-                <button id="darkButton" onclick="darkmode(nightMode)">Night Mode</button>
+                <button id="darkButton" class="button" onclick="darkmode(nightMode)">Night Mode</button>
+                <button id="signoutButton" calss="button">Sign Out</button>
 
                 <div id="site_1" class="site">
                     <div id="content_text_1">
@@ -49,15 +50,15 @@
                 </div>
                 <div id="site_2" class="site">
                     <div id="circle_home" class="circle">
-                        <img class="images" id="img_home" src="../media/home.jpg" >
+                        <img class="images" src="../media/new_Entry.png" >
                         <div id="home_value" class="hover_value"><h1 style="position:absolute;margin-left:135px;margin-top: 155px;">Home</h1></div>
                     </div>
                     <div id="circle_statistic" class="circle">
-                        <img class="images" id="img_statistic" src="../media/statistics.jpg" >
+                        <img class="images" src="../media/show_entries.png" >
                         <div id="statistic_value" class="hover_value"><h1 style="position:absolute;margin-left:105px;margin-top: 135px;text-align: center;">View your <br>Statistics</h1></div>
                     </div>
                     <div id="circle_newentry" class="circle">
-                        <img class="images" id="img_newentry" src="../media/newentry.jpg" >
+                        <img class="images"  src="../media/logout.png" >
                         <div id="newentry_value" class="hover_value"><h1 style="position:absolute;margin-left:100px;margin-top: 135px;text-align: center;">Create a <br>New Entry</h1></div>
                     </div>
                 </div>
@@ -68,7 +69,7 @@
 
         <?php
             if(!isset($_SESSION["user_id"])){
-                header('Location: http://localhost/Stats/src/php/login.php');
+                header('Location: http://localhost/stats/src/php/login.php');
             }
         ?>
     </body>

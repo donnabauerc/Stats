@@ -64,7 +64,7 @@
 </html>
 <?php
     if(isset($_SESSION['user_id'])){
-        header('Location: http://localhost/Stats/src/php/index.php');
+        header('Location: http://localhost/stats/src/php/index.php');
     }
 
     if(isset($_POST['login'])){
@@ -106,7 +106,7 @@
 
             $_SESSION['user_id'] = $user["id"];
 
-            header('Location: http://localhost/Stats/src/php/index.php');
+            header('Location: http://localhost/stats/src/php/index.php');
         }else{
             echo "Sorry, an error has ocurred! ";
         }
