@@ -23,6 +23,10 @@ body{
     padding: 12px;
     width: 167px;
 }
+.ButtonLayout:hover{
+    background-color: #DDDDDD;
+    transition-duration: 0.3s;
+}
 .input{
     border: none;
     padding: 8px 7px 8px 7px;

@@ -18,7 +18,7 @@
     $mail->addAddress($_SESSION["email"], $_SESSION["username"]);
 
     $mail->Subject = 'Stats Registration';
-    $mail->msgHTML('<h1>Hello World!</h1><br><p>You have succesfully been registered for Stats!<br>Now track your expenses and make entries!</p>');
+    $mail->msgHTML('<h1>Hello World!</h1><br><p>You have succesfully been registered for Stats!<br>Before using all the functions of Stats, <br> please confirm your account: <a href="http://localhost/stats/src/php/confirm.php">Click Here!</a> </p>');
 
     $mail->AltBody = 'Sorry, there has been a mistake!';
 

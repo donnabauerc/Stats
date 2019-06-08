@@ -72,28 +72,19 @@
     }
 
     if(isset($_POST['register'])){
-            //validation of passwords is still missing
+            if($_POST['password1'] == $_POST['password2']){
+                $_SESSION['register_user'] = [$_POST['email'], $_POST['uname'], $_POST['password1']];
 
-            if($_POST['password1'] == $_POST['password2'])
-            $register_user = [$_POST['email'], $_POST['uname'], $_POST['password1']];
-            $user = [$register_user[1], $register_user[2]];
-
-            $registerStatement = "INSERT INTO user (id, username, password, email) VALUES ('', '$register_user[1]', '$register_user[2]', '$register_user[0]');";
-            $result = $conn->query($registerStatement);
-
-            if(!$result){ //mithilfe Unique Constraints: username, email
-                echo '<br> Sorry, there was an error creating your account! Username or Email are used!';
-            }else{
-                validateUser($register_user[1],$register_user[2], $conn);
-
-                $_SESSION['username'] = $register_user[1];
-                $_SESSION['email'] = $register_user[0];
+                $_SESSION['username'] = $_SESSION['register_user'][1];
+                $_SESSION['email'] = $_SESSION['register_user'][0];
 
                 include "mail.php";
 
                 if ($mail->send()) {
-                    validateUser($register_user[1], $register_user[2], $conn);
+                    header('Location: http://localhost/stats/src/php/login.php');
+                    echo "Your account has been added, please verify you email!";
                 }
+
             }
     }
 

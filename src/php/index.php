@@ -10,8 +10,9 @@
         <title>Stats</title>
         <link rel="stylesheet" type="text/css" href="../css/style.css">
         <script>
-            //https://tympanus.net/Tutorials/CircleHoverEffects/
             var nightMode = true;
+            var data = {};
+
             function darkmode(dark){
                 if(dark){
                     document.getElementById("wrapper").style.backgroundColor = "black";
@@ -21,6 +22,11 @@
                     nightMode = true;
                 }
             }
+            $(".logout").click(function(){
+                    data['logout'] = true;
+                    $.post("index.php", data);
+                });
+
         </script>
     </head>
     <body>
@@ -36,7 +42,7 @@
 
             <div id="content">
                 <button id="darkButton" class="button" onclick="darkmode(nightMode)">Night Mode</button>
-                <button id="signoutButton" calss="button">Sign Out</button>
+                <button id="signoutButton" class="button logout">Signout</button>
 
                 <div id="site_1" class="site">
                     <div id="content_text_1">
@@ -51,24 +57,31 @@
                 <div id="site_2" class="site">
                     <div id="circle_home" class="circle">
                         <img class="images" src="../media/new_Entry.png" >
-                        <div id="home_value" class="hover_value"><h1 style="position:absolute;margin-left:135px;margin-top: 155px;">Home</h1></div>
+                        <div id="home_value" class="hover_value"><h1 style="position:absolute;margin-left:135px;margin-top: 155px;">New Entry</h1></div>
                     </div>
                     <div id="circle_statistic" class="circle">
                         <img class="images" src="../media/show_entries.png" >
                         <div id="statistic_value" class="hover_value"><h1 style="position:absolute;margin-left:105px;margin-top: 135px;text-align: center;">View your <br>Statistics</h1></div>
                     </div>
-                    <div id="circle_newentry" class="circle">
+                    <div id="circle_logout" class="circle logout">
                         <img class="images"  src="../media/logout.png" >
-                        <div id="newentry_value" class="hover_value"><h1 style="position:absolute;margin-left:100px;margin-top: 135px;text-align: center;">Create a <br>New Entry</h1></div>
+                        <div id="logout_value" class="hover_value" ><h1 style="position:absolute;margin-left:130px;margin-top: 155px;">Logout</h1></div>
                     </div>
                 </div>
-                <div id="site_3" class="site"> </div>
+                <!--<div id="site_3" class="site">How does Stats work?</div>-->
             </div>
         </div>
 
 
         <?php
+
             if(!isset($_SESSION["user_id"])){
+                header('Location: http://localhost/stats/src/php/login.php');
+            }
+
+            if(isset($_SESSION["logout"])){
+                session_destroy();
+                session_unset();
                 header('Location: http://localhost/stats/src/php/login.php');
             }
         ?>
