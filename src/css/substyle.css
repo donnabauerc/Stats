@@ -1,0 +1,131 @@
+body{
+    top: 0px;
+    left: 0px;
+    font-family: Arial;
+    background-color: #222;
+    animation-name: color;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    color: white;
+}
+table {
+    border-spacing: 0px;
+    margin-top: 15%;
+    right: 10%;
+    position: absolute;
+}
+th {
+    text-align: left;
+}
+th, td {
+    padding: 10px 100px 10px 10px;
+}
+a{
+    text-decoration: none;
+    text-transform: none;
+    color: white;
+}
+.button{
+    z-index: 5;
+    position: fixed;
+    top: 0px;
+    border: none;
+    padding: 5px 15px 5px 15px;
+    color: white;
+    background-color: #575FCF;
+}
+
+#wrapper{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+}
+#navbar{
+    z-index: 5;
+    position: absolute;
+    list-style-type: none;
+    height: 30%;
+    padding-left: 0px;
+    left: 0px;
+}
+#navdiv{
+    position: fixed;
+    z-index: 5;
+    top: 30%;
+}
+.effect{
+    opacity: 0.2;
+    color: white;
+    cursor: pointer;
+    list-style-type: none;
+    width: 150px;
+    padding: 15% 6% 15% 6%;
+    font-size: 30px;
+    background-color: #dee0e2;
+}
+.effect:hover{
+    opacity: 1;
+    transition: 0.5s;
+    width: 150%;
+    background-color: #575FCF;
+}
+.input{
+    border: none;
+    padding: 8px 7px 8px 7px;
+    background-color: #DDDDDD;
+    margin-bottom: 15px;
+}
+.input:hover{
+    background-color: white;
+}
+#myChart{
+    margin-left: 55%;
+}
+
+#signoutButton{
+    border: 2px solid white;
+    right: 0px;
+}
+.button:hover{
+    color: white;
+    background-color: black;
+}
+#content{
+    margin-left: 290px;
+}
+#createDiv{
+    margin-top: 16%;
+}
+.ButtonLayout{
+    border: none;
+    padding: 12px;
+    width: 167px;
+    background-color: #575FCF;
+    color: white;
+}
+.ButtonLayout:hover{
+    background-color: #DDDDDD;
+    color: black;
+    transition-duration: 0.3s;
+}
+
+#about{
+    font-size: 200%;
+    position: absolute;
+    top: 170px;
+    left: 270px;
+}
+
+@keyframes color {
+    0% {
+        background-color: #464DBD;
+    }
+    50% {
+        background-color: #575FCF;
+    }
+    100% {
+        background-color: #464DBD;
+    }
+}

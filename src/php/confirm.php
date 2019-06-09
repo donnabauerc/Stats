@@ -7,7 +7,7 @@
         header('Location: localhost/stats/src/php/login.php');
     }
 
-    $conn = new mysqli($_SESSION['db_host'], $_SESSION['db_username'], $_SESSION['dp_password'], $_SESSION['db_database']);
+    $conn = new mysqli($_SESSION['db_host'], $_SESSION['db_username'], $_SESSION['db_password'], $_SESSION['db_database']);
 
     if($conn->connect_error){
         die("Connection failed: " . $conn->connect_error);
